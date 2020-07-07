@@ -1,0 +1,42 @@
+@import '../../../../sass/core/colors';
+
+cdk-virtual-scroll-viewport {
+  height: 350px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      height: 30px;
+      color: $color-med-grey;
+      background-color: $color-light-grey;
+    }
+
+    td {
+      height: 40px;
+    }
+
+    td span.type {
+      padding: 3px 7px;
+      border-radius: 7px;
+      display: inline-block;
+      background-color: $bg-color;
+    }
+
+    td span.currency {
+      color: $color-med-grey;
+    }
+
+    td.address {
+      width: 100px;
+      overflow: hidden;
+      display: inline-block;
+      text-overflow: ellipsis;
+    }
+
+    th, tr, td {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<cdk-virtual-scroll-viewport class="wrapper" itemSize="50" minBufferPx="70" maxBufferPx="80" (scrolledIndexChange)="indexChanged()">
+  <table>
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Amount XTZ USD</th>
+      <th>Date</th>
+      <th>Address</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *cdkVirtualFor="let item of data">
+      <td><span class="type">{{ item.type }}</span></td>
+      <td>{{ item.amount }} <span class="currency">34.7 USD</span></td>
+      <td>{{ item.date | tzDatePipe: dateFormat }}</td>
+      <td class="address">{{ item.address }}</td>
+    </tr>
+    </tbody>
+  </table>
+</cdk-virtual-scroll-viewport>
+
