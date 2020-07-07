@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
 It uses following package
 
-##Packages:
+## Packages:
 
 * [@ngrx/store](https://ngrx.io/guide/store)
 * [@ngrx/effects](https://ngrx.io/guide/effects)
