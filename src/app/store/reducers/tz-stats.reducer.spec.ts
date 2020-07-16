@@ -11,8 +11,7 @@ const httpErrorResponse = new HttpErrorResponse({error: true});
 
 describe('TZ Stats Reducer', () => {
   it('should show loading true', () => {
-    const limit = 10
-    const action = fromActions.loadRequest({limit});
+    const action = fromActions.loadRequest();
 
     const result = fromReducer.reducer(initialState, action);
 

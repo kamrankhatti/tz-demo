@@ -21,6 +21,10 @@ export class TzTableComponent implements OnInit {
 
   constructor() {}
 
+  trackByFn(_: number, item: ITableData) {
+    return item.id;
+  }
+
   indexChanged() {
     const end = this.viewport.getRenderedRange().end;
     const total = this.viewport.getDataLength();

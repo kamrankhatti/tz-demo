@@ -14,7 +14,6 @@ import { ITZStatsState } from "../store/reducers/tz-stats.reducer";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  limit: number = 10;
   loading$: Observable<boolean>;
   items$: Observable<ITableData[]>;
 
@@ -27,7 +26,7 @@ export class HomeComponent implements OnInit {
         map((loaded: boolean) => {
           // only load http request if its not already loaded, read from store otherwise
           if (!loaded) {
-            this.store.dispatch(fromActions.loadRequest({ limit: this.limit }));
+            this.store.dispatch(fromActions.loadRequest());
           }
         }, take(1)) // To unsubscribe
       )
@@ -37,8 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   nextBatch() {
-    this.limit = this.limit + 10
-    this.store.dispatch(fromActions.loadRequest({ limit: this.limit }));
+    this.store.dispatch(fromActions.loadRequest());
   }
 
   ngOnInit(): void {

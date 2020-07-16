@@ -10,12 +10,13 @@
     </thead>
 
     <tbody>
-    <tr *cdkVirtualFor="let item of data">
+    <tr *cdkVirtualFor="let item of data; trackBy: trackByFn" class="items">
       <td><span class="type">{{ item.type }}</span></td>
       <td>{{ item.amount }} <span class="currency">34.7 USD</span></td>
       <td>{{ item.date | tzDatePipe: dateFormat }}</td>
       <td class="address">{{ item.address }}</td>
     </tr>
+    <tr><td colspan="4"><tz-spinner *ngIf="loading"></tz-spinner></td></tr>
     </tbody>
   </table>
 </cdk-virtual-scroll-viewport>

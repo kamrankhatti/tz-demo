@@ -1,5 +1,5 @@
+import { catchError, debounceTime, map, mergeMap } from "rxjs/operators";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, mergeMap } from "rxjs/operators";
 import { HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { of } from "rxjs";
@@ -10,16 +10,18 @@ import { APIParams, HomeService } from "../../home/home.service";
 
 @Injectable()
 export class TzStatsEffect {
+  limit = 0;
   constructor(private action$: Actions, private service: HomeService) {}
 
   loadRequestEffect$ = createEffect(() => {
     return this.action$.pipe(
+      debounceTime(350),
       ofType(fromActions.loadRequest),
-      mergeMap((action) => {
-        const { limit } = action
+      mergeMap(() => {
+        this.limit = this.limit + 10
         const params = new HttpParams()
-          .set('limit', String(limit))
           .set('type', APIParams.type)
+          .set('limit', String(this.limit))
           .set('columns', APIParams.columns)
           .set('receiver', APIParams.receiver);
 

@@ -3,18 +3,15 @@
     <span class="material-icons">restore</span> Recent Transactions
   </div>
   <div class="table">
-    <ng-container [ngSwitch]="loading$ | async">
-      <tz-spinner *ngSwitchCase="true"></tz-spinner>
-
-      <ng-container *ngSwitchCase="false">
-        <ng-container *ngIf="(items$ | async).length">
-          <tz-table [data]="items$ | async" (loadMore)="nextBatch()"></tz-table>
-        </ng-container>
-        <p class="wrapper__no-record" *ngIf="!(items$ | async).length">
-          No Record Found
-        </p>
-      </ng-container>
+    <ng-container *ngIf="(items$ | async).length">
+      <tz-table
+        [data]="items$ | async"
+        [loading]="loading$ | async"
+        (loadMore)="nextBatch()"></tz-table>
     </ng-container>
+    <p class="wrapper__no-record" *ngIf="!(items$ | async).length">
+      No Record Found
+    </p>
   </div>
 </div>
 

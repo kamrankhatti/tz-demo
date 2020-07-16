@@ -4,8 +4,7 @@ import { createAction, props } from '@ngrx/store';
 import { ITableData } from '../../shared/components/tz-table';
 
 export const loadRequest = createAction(
-  '[TZ Demo] get TZ Stats',
-  props<{ limit: number }>()
+  '[TZ Demo] get TZ Stats'
 );
 
 export const loadFailure = createAction(
